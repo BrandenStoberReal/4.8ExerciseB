@@ -13,8 +13,8 @@ from PIL import Image
 import os
 
 # Deletes old created images if they exist
-if os.path.exists("newImage.jpg"):
-    os.remove("newImage.jpg")
+if os.path.exists("./Pictures/newImage.jpg"):
+    os.remove("./Pictures/newImage.jpg")
 
 # Prints two blank lines to start our program output
 print("\n\n")
@@ -64,7 +64,7 @@ newImage = Image.new("RGB", img.size)
 # Assigns the pixel values to newImage
 newImage.putdata(new_pixels)
 # Saves the new image file
-newImage.save("newImage.jpg")
+newImage.save("./Pictures/newImage.jpg")
 
 # Creates an ImageCore Object from original image
 pixels = img.getdata()
