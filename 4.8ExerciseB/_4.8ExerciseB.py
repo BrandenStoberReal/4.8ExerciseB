@@ -22,6 +22,15 @@ print("\n\n")
 # Opens image - Local File in repl.it
 img = Image.open('./Pictures/image.jpg')
 
+# Creates an ImageCore Object from original image
+pixels = img.getdata()
+# Creates empty array to hold new pixel values
+new_pixels = []
+# For every pixel from our original image, it saves
+# a copy of that pixel to our new_pixels array
+for p in pixels:
+    new_pixels.append(p)
+
 # Rescale image size down, if needed
 width = img.width
 height = img.height
@@ -65,15 +74,6 @@ newImage = Image.new("RGB", img.size)
 newImage.putdata(new_pixels)
 # Saves the new image file
 newImage.save("./Pictures/newImage.jpg")
-
-# Creates an ImageCore Object from original image
-pixels = img.getdata()
-# Creates empty array to hold new pixel values
-new_pixels = []
-# For every pixel from our original image, it saves
-# a copy of that pixel to our new_pixels array
-for p in pixels:
-    new_pixels.append(p)
 
 # Calls the newFilter function to create the image
 newFilter()
