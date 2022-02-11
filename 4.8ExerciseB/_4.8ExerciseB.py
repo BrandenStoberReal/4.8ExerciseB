@@ -46,7 +46,7 @@ if scale != 0:
 ########################
 #        Filter        #
 ########################
-def newFilter():
+def newFilter(RedMulti, BlueMulti, GreenMulti):
     # Starts at the first pixel in the image
     location = 0
     # Continues until it has looped through all pixels
@@ -59,22 +59,25 @@ def newFilter():
         b = p[2]
         # Perform pixel manipulation and stores results
         # to a new red, green and blue components
-        newr = r
-        newg = g
-        newb = b
+        newr = r * RedMulti
+        newg = g * GreenMulti
+        newb = b * BlueMulti
         # Assign new red, green and blue components to pixel
         # at that specific location
         new_pixels[location] = (newr, newg, newb)
         # Changes the location to the next pixel in array
         location = location + 1
-# Creates a new image, the same size as the original 
-# using RGB value format
-newImage = Image.new("RGB", img.size)
-# Assigns the pixel values to newImage
-newImage.putdata(new_pixels)
-# Saves the new image file
-newImage.save("./Pictures/newImage.jpg")
+    # Creates a new image, the same size as the original 
+    # using RGB value format
+    newImage = Image.new("RGB", img.size)
+    # Assigns the pixel values to newImage
+    newImage.putdata(new_pixels)
+    # Saves the new image file
+    newImage.save("./Pictures/newImage.jpg")
 
+RedMultiplier = input("Please input a multiplication factor for Red: ")
+BlueMultiplier = input("Please input a multiplication factor for Blue: ")
+GreenMultiplier = input("Please input a multiplication factor for Green: ")
 # Calls the newFilter function to create the image
-newFilter()
+newFilter(int(RedMultiplier), int(BlueMultiplier), int(GreenMultiplier))
 
